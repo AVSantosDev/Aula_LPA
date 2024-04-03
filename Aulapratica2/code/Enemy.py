@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
 
-from Enity import Enity
+from Entity import Enity
 
 class Enemy(Enity):
     def __init__(self):
