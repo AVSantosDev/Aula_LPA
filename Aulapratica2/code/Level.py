@@ -22,7 +22,7 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if menu_option in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
-        pygame.time.set_timer(EVENT_ENEMY, 2000)
+        pygame.time.set_timer(EVENT_ENEMY, 4000)
 
 
     def run(self):
@@ -38,12 +38,11 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
-            pygame.display.flip()
-            pass
 
+            pygame.display.flip()
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)#aqui eu desenho minas entidades
-                self.level_text(14,f'fps:{clock.get_fps() :.0f}', COLOR_WHITE, (10, 10))
+                self.level_text(20,f'FPS:{clock.get_fps() :.0f}', COLOR_WHITE, (10, 10))
                 ent.move()
 
 
@@ -52,4 +51,4 @@ class Level:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
--
+
